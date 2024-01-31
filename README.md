@@ -32,7 +32,7 @@ The project combines cutting-edge AI technologies to create a polyglot experienc
    git submodule init
    git submodule update
 
-2. Before running MyPolyglot, you need to build the Marian NMT framework. Navigate to the Marian NMT Visual Studio project and open the README file:
+2. Before running MyPolyglot, you need to build the Marian NMT framework. Navigate to the Marian NMT Visual Studio project and open the Readme file:
 
    ```bash
    cd marian/vs
