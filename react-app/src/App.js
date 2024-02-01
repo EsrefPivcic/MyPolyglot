@@ -26,6 +26,7 @@ const StyledPaper = styled(Paper)({
   width: "100%",
   textAlign: "center",
   background: "#444",
+  borderRadius: "20px",
 });
 
 const App = () => {
