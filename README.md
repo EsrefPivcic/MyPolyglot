@@ -46,6 +46,34 @@ The project combines cutting-edge AI technologies to create a polyglot experienc
 
     After building, you should find the Marian NMT binary in the marian/build/debug folder.
 
+    **Known issues:**
+    - If you run "CheckOrInstallDeps.bat" and it won't locate your Intel MKL installation folder you shold open the command prompt (in marian/vs folder) and run these commands (assuming your Intel MKL installation path is the default one: "C:\Program Files (x86)\Intel\oneAPI\mkl\latest" - if not, use the actual path to your Intel MKL installation folder in commands below):
+
+      ```bash
+      set MKLROOT=C:\Program Files (x86)\Intel\oneAPI\mkl\latest
+      set MKL_LIB_DIR=C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib
+      cd "C:\Program Files (x86)\Intel\oneAPI\mkl\latest\lib"
+      mklink /D intel64 .
+    Now run "CheckOrInstallDeps.bat" and it should work.
+
+    - When you open the root folder of the marian repository in Visual Studio (marian/vs/README.md -> at line 42 "1. Use VS2017+ with built-in support for CMake") and get this error:
+      
+      ```bash
+      [CMake]   Could not find toolchain file:
+      1> [CMake]   C:\path\to\marian-dev\vs\deps\vcpkg\scripts\buildsystems\vcpkg.cmake
+    You should open the "CMakeSettings.json" and set VCPKG_ROOT like this: "C:\\Desktop\\MyPolyglot\\marian\\vs\\deps\\vcpkg" (Assuming you cloned the repo on your Desktop, if not use the actual path to MyPolyglot repo + "\\marian\\vs\\deps\\vcpkg")
+    Also you should check the "MKLROOT" line and set it to the installation folder of Intel MKL, "C:\\Program Files (x86)\\Intel\\oneAPI\\mkl\\latest" is the default path.
+    Now Visual studio should be able to generate CMake Cache.
+
+    - If pressing 'F7' won't build the project (after generating CMake Cache), right click on "CMakeLists.txt" and click "Build".
+   
+    - If building the project throws an error at:
+      
+      ```bash
+      FAILED: src/CMakeFiles/marian.dir/microsoft/sentencepiece.cpp.obj
+     More specifically, if errors appear in the hash.h file, you should replace it with the modified hash.h file I provided in "hash_fix" folder.
+     After replacing the hash.h file, the build should be successful.
+         
 4. Install dependencies for the Go API and run it:
 
    ```bash
