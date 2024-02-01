@@ -90,6 +90,10 @@ The project combines cutting-edge AI technologies to create a polyglot experienc
 
 6. Visit http://localhost:3000 to access the MyPolyglot app.
 
+
+## Screenshot
+![Screenshot](screenshot/screenshot.png)
+
 ## Citation
 
 I want to express my gratitude to the Marian Neural Machine Translation framework, a vital component of this project. If you use Marian in your work, please make sure to cite the following paper:
