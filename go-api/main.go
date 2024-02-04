@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/gorilla/handlers"
@@ -19,6 +20,26 @@ type TranslationRequest struct {
 
 type TranslationResponse struct {
 	Translation string `json:"translation"`
+}
+
+func preprocessText(text string) string {
+	re := regexp.MustCompile(`([.!?]+\s*)`)
+	sentences := re.Split(text, -1)
+
+	var resultBuffer strings.Builder
+
+	for i, sentence := range sentences {
+		trimmedSentence := strings.TrimSpace(sentence)
+		if len(trimmedSentence) > 0 {
+			if resultBuffer.Len() > 0 && !strings.HasPrefix(trimmedSentence, "\n") {
+				punctuation := re.FindString(sentences[i-1])
+				resultBuffer.WriteString(strings.TrimRight(punctuation, " ") + "\n")
+			}
+			resultBuffer.WriteString(trimmedSentence)
+		}
+	}
+
+	return resultBuffer.String()
 }
 
 func translateHandler(w http.ResponseWriter, r *http.Request) {
@@ -36,7 +57,9 @@ func translateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = os.WriteFile(absInputFile, []byte(request.Text), 0644)
+	preprocessedText := preprocessText(request.Text)
+
+	err = os.WriteFile(absInputFile, []byte(preprocessedText), 0644)
 	if err != nil {
 		http.Error(w, "Error creating input file: "+err.Error(), http.StatusInternalServerError)
 		return
