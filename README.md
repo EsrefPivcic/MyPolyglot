@@ -75,6 +75,7 @@ The project combines cutting-edge AI technologies to create a polyglot experienc
      After replacing the hash.h file, the build should be successful.
 
 4. Download a pretrained translation model from [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) and extract it in the marian/build/debug folder.
+   I used [this](https://object.pouta.csc.fi/Tatoeba-MT-models/eng-hbs/opus+bt-2021-04-20.zip) english to bosnian model for demonstration purposes.
          
 5. Install dependencies for the Go API and run it:
 
