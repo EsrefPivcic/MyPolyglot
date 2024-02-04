@@ -74,7 +74,7 @@ The project combines cutting-edge AI technologies to create a polyglot experienc
      More specifically, if errors appear in the hash.h file (marian/src/3rd_party/sentencepiece/third_party/protobuf-lite/google/protobuf/stubs), you should replace it with the modified hash.h file I provided in "hash_fix" folder.
      After replacing the hash.h file, the build should be successful.
 
-4. Download a pretrained translation model from: [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) and extract it in the marian/build/debug folder.
+4. Download a pretrained translation model from [Helsinki-NLP](https://huggingface.co/Helsinki-NLP) and extract it in the marian/build/debug folder.
          
 5. Install dependencies for the Go API and run it:
 
