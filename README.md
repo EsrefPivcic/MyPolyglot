@@ -1,8 +1,6 @@
-# MyPolyglot (Under Development)
+# MyPolyglot
 
-MyPolyglot is an ongoing project developed for the Artificial Intelligence course at the Faculty of Information Technologies. It leverages the power of Marian NMT (Neural Machine Translation), a locally built translation framework, to provide seamless translation capabilities through a Go API and a React app.
-
-**Note: This project is currently under development, and certain features may be incomplete or subject to change. Feel free to explore.**
+MyPolyglot is a project developed for the Artificial Intelligence course at the Faculty of Information Technologies. It leverages the power of Marian NMT (Neural Machine Translation), a locally built translation framework, to provide seamless translation capabilities through a Go API and a React app.
 
 ## Overview
 
